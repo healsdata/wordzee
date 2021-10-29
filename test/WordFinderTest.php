@@ -2,12 +2,11 @@
 
 namespace Healsdata\Wordzee\Test\Word;
 
-use Healsdata\Wordzee\Word\WordFinder;
+use Healsdata\Wordzee\WordFinder;
 use PHPUnit\Framework\TestCase;
 
 class WordFinderTest extends TestCase
 {
-
     private WordFinder $wordFinder;
 
     public function setUp(): void

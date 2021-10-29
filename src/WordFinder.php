@@ -1,6 +1,6 @@
 <?php
 
-namespace Healsdata\Wordzee\Word;
+namespace Healsdata\Wordzee;
 
 class WordFinder
 {
@@ -44,6 +44,4 @@ class WordFinder
 
         return $output;
     }
-
-
 }

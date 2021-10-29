@@ -1,0 +1,12 @@
+{
+    "name": "healsdata/wordzee",
+    "type": "project",
+    "require": {
+        "pds/skeleton": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Healsdata\\Wordzee\\": "src/"
+        }
+    }
+}

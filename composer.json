@@ -8,5 +8,13 @@
         "psr-4": {
             "Healsdata\\Wordzee\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Healsdata\\Wordzee\\Test\\": "test/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89d3baa078248fa0db1569d12df5659e",
+    "content-hash": "3e1d04b3c2bbb69ef3770d3f862445c3",
     "packages": [
         {
             "name": "pds/skeleton",
@@ -2142,7 +2142,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
 }

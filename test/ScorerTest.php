@@ -73,6 +73,8 @@ class ScorerTest extends TestCase
     public function dataProviderPotentialPlays()
     {
         return [
+            ["zzz", 9, "1111"],
+            ["zz", 6, "1111"],
             ["zzzz", 12, "1111"],
             ["zzzz", 21, "1231"],
             ["zzzz", 24, "111D"],

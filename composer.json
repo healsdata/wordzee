@@ -2,7 +2,8 @@
     "name": "healsdata/wordzee",
     "type": "project",
     "require": {
-        "pds/skeleton": "^1.0"
+        "pds/skeleton": "^1.0",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {

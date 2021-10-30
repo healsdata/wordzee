@@ -51,20 +51,27 @@ foreach ($words as $word) {
 
         $potentialPlay = new PotentialPlay($word, $line);
 
-        $score = $scorer->scorePotentialPlay($potentialPlay);
-
-        $potentialPlay->setScore($score);
+        $scorer->scorePotentialPlay($potentialPlay);
 
         $scoredPlays[] = $potentialPlay;
     }
 }
 
 usort($scoredPlays, function (PotentialPlay $playA, PotentialPlay $playB){
+
+    if ($playA->getScore() == $playB->getScore()) {
+        return (int)$playB->isFull() - (int)$playA->isFull();
+    }
+
     return $playB->getScore() - $playA->getScore();
 });
 
 $out = 0;
 foreach ($scoredPlays as $scoredPlay) {
+    if (!$scoredPlay->isFull()) {
+        continue;
+    }
+
     print $scoredPlay . PHP_EOL;
     $out++;
 

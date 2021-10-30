@@ -7,6 +7,7 @@ class PotentialPlay
     private string $word;
     private string $line;
     private ?int $score = null;
+    private bool $isFull = false;
 
     public function __construct(string $word, string $line)
     {
@@ -50,9 +51,24 @@ class PotentialPlay
         $this->score = $score;
     }
 
+    /**
+     * @return bool
+     */
+    public function isFull(): bool
+    {
+        return $this->isFull;
+    }
+
+    /**
+     * @param bool $isFull
+     */
+    public function setIsFull(bool $isFull): void
+    {
+        $this->isFull = $isFull;
+    }
 
     public function __toString(): string
     {
-        return $this->word . " in " . $this->line . "(" . $this->score . ")";
+        return $this->word . " in " . $this->line . " (" . $this->score . ($this->isFull() ? "!" : "") . ")";
     }
 }

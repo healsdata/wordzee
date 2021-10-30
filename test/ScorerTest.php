@@ -73,27 +73,30 @@ class ScorerTest extends TestCase
     public function dataProviderPotentialPlays()
     {
         return [
-            ["zzz", 9, "1111"],
-            ["zz", 6, "1111"],
-            ["zzzz", 12, "1111"],
-            ["zzzz", 21, "1231"],
-            ["zzzz", 24, "111D"],
-            ["zzzz", 36, "111T"],
-            ["zzzz", 108, "22DT"],
+            ["zzz", 9, "1111", false],
+            ["zz", 6, "1111", false],
+            ["zzzz", 12, "1111", true],
+            ["zzzz", 21, "1231", true],
+            ["zzzz", 24, "111D", true],
+            ["zzzz", 36, "111T", true],
+            ["zzzz", 108, "22DT", true],
         ];
     }
 
     /**
      * @dataProvider dataProviderPotentialPlays
      * @param string $word
-     * @param int $expected
+     * @param int $expectedScore
+     * @param string $line
+     * @param bool $isFullExpected
      */
-    public function testScorePotentialPlay(string $word, int $expected, string $line)
+    public function testScorePotentialPlay(string $word, int $expectedScore, string $line, bool $isFullExpected)
     {
         $potentialPlay = new PotentialPlay($word, $line);
 
         $this->scorer->scorePotentialPlay($potentialPlay);
 
-        $this->assertEquals($expected, $potentialPlay->getScore());
+        $this->assertEquals($expectedScore, $potentialPlay->getScore());
+        $this->assertEquals($isFullExpected, $potentialPlay->isFull());
     }
 }

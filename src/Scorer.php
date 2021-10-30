@@ -43,6 +43,8 @@ class Scorer
         $wordChunks = str_split($potentialPlay->getWord());
         $lineChunks = str_split($potentialPlay->getLine());
 
+        $potentialPlay->setIsFull(sizeof($wordChunks) === sizeof($lineChunks));
+
         foreach ($wordChunks as $i => $letter) {
             if (!array_key_exists($letter, $this->letterScores)) {
                 continue;

@@ -4,6 +4,7 @@
 namespace Healsdata\Wordzee\Test\Word;
 
 
+use Healsdata\Wordzee\PotentialPlay;
 use Healsdata\Wordzee\Scorer;
 use PHPUnit\Framework\TestCase;
 
@@ -65,6 +66,31 @@ class ScorerTest extends TestCase
     public function testScoreWord(string $word, int $expected)
     {
         $actual = $this->scorer->scoreWord($word);
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function dataProviderPotentialPlays()
+    {
+        return [
+            ["zzzz", 12, "1111"],
+            ["zzzz", 21, "1231"],
+            ["zzzz", 24, "111D"],
+            ["zzzz", 36, "111T"],
+            ["zzzz", 108, "22DT"],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderPotentialPlays
+     * @param string $word
+     * @param int $expected
+     */
+    public function testScorePotentialPlay(string $word, int $expected, string $line)
+    {
+        $potentialPlay = new PotentialPlay($word, $line);
+
+        $actual = $this->scorer->scorePotentialPlay($potentialPlay);
 
         $this->assertEquals($expected, $actual);
     }

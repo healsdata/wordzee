@@ -4,6 +4,11 @@ namespace Healsdata\Wordzee;
 
 class Scorer
 {
+    const lineMultipliers = [
+        "D" => 2,
+        "T" => 3
+    ];
+
     private array $letterScores = [];
 
     public function __construct(array $letterScores)
@@ -26,6 +31,36 @@ class Scorer
 
             $score += $this->letterScores[$letter];
         }
+
+        return $score;
+    }
+
+    public function scorePotentialPlay(PotentialPlay $potentialPlay) : int
+    {
+        $score = 0;
+        $multiplier = 1;
+
+        $wordChunks = str_split($potentialPlay->getWord());
+        $lineChunks = str_split($potentialPlay->getLine());
+
+        foreach ($wordChunks as $i => $letter) {
+            if (!array_key_exists($letter, $this->letterScores)) {
+                continue;
+            }
+
+            $letterScore = $this->letterScores[$letter];
+
+            $slot = $lineChunks[$i];
+
+            if (is_numeric($slot)) {
+                $score += ($letterScore * $slot);
+            } elseif (array_key_exists($slot, self::lineMultipliers)) {
+                $score += $letterScore;
+                $multiplier *= self::lineMultipliers[$slot];
+            }
+        }
+
+        $score *= $multiplier;
 
         return $score;
     }

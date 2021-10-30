@@ -10,7 +10,7 @@ require_once 'vendor/autoload.php';
 $finder = new WordFinder("data/scrabble-words-7.txt");
 $scorer = new Scorer(json_decode(file_get_contents("data/tile-scores.json"), true));
 
-$words = $finder->findSpellableWith("ylodegi");
+$words = $finder->findSpellableWith("zapkent");
 
 $wordsByScore = [];
 

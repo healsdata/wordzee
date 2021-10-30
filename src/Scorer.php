@@ -35,7 +35,7 @@ class Scorer
         return $score;
     }
 
-    public function scorePotentialPlay(PotentialPlay $potentialPlay) : int
+    public function scorePotentialPlay(PotentialPlay $potentialPlay) : void
     {
         $score = 0;
         $multiplier = 1;
@@ -62,6 +62,6 @@ class Scorer
 
         $score *= $multiplier;
 
-        return $score;
+        $potentialPlay->setScore($score);
     }
 }

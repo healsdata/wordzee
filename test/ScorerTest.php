@@ -92,8 +92,8 @@ class ScorerTest extends TestCase
     {
         $potentialPlay = new PotentialPlay($word, $line);
 
-        $actual = $this->scorer->scorePotentialPlay($potentialPlay);
+        $this->scorer->scorePotentialPlay($potentialPlay);
 
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $potentialPlay->getScore());
     }
 }
